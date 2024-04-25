@@ -16,6 +16,6 @@ public class LeapRotater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, camera.transform.eulerAngles.y, transform.eulerAngles.z);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, camera.transform.eulerAngles.y + 25, transform.eulerAngles.z);
     }
 }

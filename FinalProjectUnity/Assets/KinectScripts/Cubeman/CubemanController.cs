@@ -36,7 +36,7 @@ public class CubemanController : MonoBehaviour
 	private LineRenderer[] lines;
 	private int[] parIdxs;
 
-	private Vector3 initialPosition;
+	public Vector3 initialPosition;
 	private Quaternion initialRotation;
 	private Vector3 initialPosOffset = Vector3.zero;
 	private uint initialPosUserID = 0;
