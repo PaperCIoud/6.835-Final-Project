@@ -101,6 +101,12 @@ public class KinectManager : MonoBehaviour
 	public Text GesturesDebugText;
 	// public GUIText GesturesDebugText;
 
+	//Our Variables
+	//public Vector3 skeletonStartingPos = Vector3.zero;
+	public Vector3 skeletonOri = Vector3.zero;
+
+
+
 
 	// Bool to keep track of whether Kinect has been initialized
 	private bool KinectInitialized = false;
@@ -820,12 +826,17 @@ public class KinectManager : MonoBehaviour
 	// clears Kinect buffers and resets the filters
 	public void ResetFilters()
 	{
+		Debug.Log("Reset filter called");
 		if(!KinectInitialized)
 			return;
 
 		// clear kinect vars
 		player1Pos = Vector3.zero; player2Pos = Vector3.zero;
+		// player1Pos = skeletonStartingPos;
+		// player2Pos = skeletonStartingPos;
 		player1Ori = Matrix4x4.identity; player2Ori = Matrix4x4.identity;
+		// player1Ori = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(skeletonOri), Vector3.one);
+		// player2Ori = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(skeletonOri), Vector3.one);
 
 		int skeletonJointsCount = (int)KinectWrapper.NuiSkeletonPositionIndex.Count;
 		for(int i = 0; i < skeletonJointsCount; i++)
