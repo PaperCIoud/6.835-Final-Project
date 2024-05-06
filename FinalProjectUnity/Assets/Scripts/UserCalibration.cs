@@ -15,10 +15,12 @@ public class UserCalibration : MonoBehaviour
 
     private int numClicks;
     //radial distance in x z plane from tablet
-    private Vector3 tabletCenter;
+    public  Vector2 tabletCenter2D;
     private float heighFromTablet;
 
     public float offsetAngle;
+
+    public float curTestAngle;
 
 
 
@@ -26,6 +28,7 @@ public class UserCalibration : MonoBehaviour
     void Start()
     {
         numClicks = 0;
+        tabletCenter2D = new Vector2(0, 0);
     }
 
     // Update is called once per frame
@@ -52,7 +55,7 @@ public class UserCalibration : MonoBehaviour
 
             heighFromTablet = tPosePos.y - downPos.y;
 
-            Vector2 tabletCenter2D = LineIntersection(
+            tabletCenter2D = LineIntersection(
                 new Vector2(tPosePos.x, tPosePos.z),
                 new Vector2(backPos.x, backPos.z),
                 new Vector2(leftPos.x, leftPos.z),
@@ -63,8 +66,11 @@ public class UserCalibration : MonoBehaviour
             cubemanController.initialPosition = new Vector3(cubemanController.initialPosition.x-tabletCenter2D.x, cubemanController.initialPosition.y + 0.0f, cubemanController.initialPosition.z-tabletCenter2D.y);
 
             numClicks ++;
-
         }
+
+        curTestAngle = Mathf.Atan2(headTransform.position.x - tabletCenter2D.x, headTransform.position.z - tabletCenter2D.y) * 180 / Mathf.PI;
+
+
     }
 
 

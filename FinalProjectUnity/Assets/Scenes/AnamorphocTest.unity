@@ -224,6 +224,10 @@ MonoBehaviour:
   BottomLeftCornerTransform: {fileID: 280487809}
   BottomRightCornerTransform: {fileID: 975567123}
   TopLeftCornerTransform: {fileID: 1163658928}
+  isPast180: 0
+  isDebugging: 0
+  pastPosNeg: 0
+  wasInverted: 0
 --- !u!1 &280487808
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +871,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 9016051418431836776}
+  inverterPath: ConfigInverted.json
+  normalPath: ConfigNormal.json
+  savePath: TrackingConfig.json
+  invertVal: 
+  normalVal: 
+  isInverted: 0
+  angleGive: 70
+  curTestAngle: 180
+  userCal: {fileID: 5312998646067862856}
 --- !u!1 &1163658927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,6 +2341,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.24287811
       objectReference: {fileID: 0}
@@ -2366,6 +2391,10 @@ PrefabInstance:
     - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400036, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: ed1c50b3cebc9374f9da79ca55dd4e4b, type: 3}
       propertyPath: Head
@@ -2450,7 +2479,9 @@ MonoBehaviour:
   rightPos: {x: 0, y: 0, z: 0}
   backPos: {x: 0, y: 0, z: 0}
   downPos: {x: 0, y: 0, z: 0}
+  tabletCenter2D: {x: 0, y: 0}
   offsetAngle: 0
+  curTestAngle: 0
 --- !u!223 &5345450342989145206
 Canvas:
   m_ObjectHideFlags: 0
@@ -3125,7 +3156,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 900
+  far clip plane: 2
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -3230,10 +3261,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa425b1fce9f6a54d9dc97be9f733310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EyePosition: {fileID: 976726852}
+  EyePosition: {fileID: 329448794}
   BottomLeftCornerTransform: {fileID: 1167758223}
   BottomRightCornerTransform: {fileID: 1758455882}
   TopLeftCornerTransform: {fileID: 1273530962}
+  isPast180: 0
+  isDebugging: 0
+  pastPosNeg: 0
+  wasInverted: 0
 --- !u!114 &9016051418431836781
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,19 @@ public class LeapRotater : MonoBehaviour
     public string normalVal = "";
     public bool isInverted = false;
 
+    public float angleGive = 70;
+
+    public float curTestAngle = 180;
+
+    public UserCalibration userCal;
+
+    private Matrix4x4 rotate90 = new Matrix4x4(
+			new Vector4(1, 0, 0, 0),
+			new Vector4(0, 0, -1, 0),
+			new Vector4(0, -1, 0, 0),
+			new Vector4(0, 0, 0, -1)
+			);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +50,15 @@ public class LeapRotater : MonoBehaviour
             flipDeviceOri();
         }
 
+        curTestAngle = (userCal != null)? userCal.curTestAngle : curTestAngle;
+
+        if (!isInverted && Mathf.Abs(curTestAngle) < angleGive) { //is in range where hands should probs be flipped [-70, 70]
+            flipDeviceOri();
+        }
+        else if (isInverted && Mathf.Abs(curTestAngle) > 180 - angleGive) { //is in range where hands should probs be flipped [-180, -110] and [110, 180]
+            flipDeviceOri();
+        }
+
     }
 
     void flipDeviceOri(){
@@ -48,6 +70,8 @@ public class LeapRotater : MonoBehaviour
         }
 
         isInverted = !isInverted;
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, -1));
+        // transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 180, transform.eulerAngles.z);
     }
 
     void ReadString(string path, ref string saveLoc, bool print = false){
