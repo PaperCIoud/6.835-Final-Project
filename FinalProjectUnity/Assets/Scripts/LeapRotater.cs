@@ -21,6 +21,7 @@ public class LeapRotater : MonoBehaviour
     public float curTestAngle = 180;
 
     public UserCalibration userCal;
+    public Transform itemToFlip;
 
     private Matrix4x4 rotate90 = new Matrix4x4(
 			new Vector4(1, 0, 0, 0),
@@ -71,6 +72,7 @@ public class LeapRotater : MonoBehaviour
 
         isInverted = !isInverted;
         transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, -1));
+        itemToFlip.localScale = Vector3.Scale(itemToFlip.localScale, new Vector3(1, 1, 1));
         // transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 180, transform.eulerAngles.z);
     }
 

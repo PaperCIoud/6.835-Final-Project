@@ -16,11 +16,13 @@ public class UserCalibration : MonoBehaviour
     private int numClicks;
     //radial distance in x z plane from tablet
     public  Vector2 tabletCenter2D;
-    private float heighFromTablet;
+    public float heighFromTablet;
 
     public float offsetAngle;
 
     public float curTestAngle;
+
+    public float heightToTest;
 
 
 
@@ -38,16 +40,22 @@ public class UserCalibration : MonoBehaviour
         {
             switch (numClicks)
             {
-                case 0: tPosePos = headTransform.position; var test1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); test1.transform.position = headTransform.position; test1.transform.localScale = Vector3.one * 0.08f; break;
-                case 1: downPos = headTransform.position; test1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); test1.transform.position = headTransform.position;test1.transform.localScale = Vector3.one * 0.08f;break;
-                case 2: leftPos = headTransform.position; test1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); test1.transform.position = headTransform.position;test1.transform.localScale = Vector3.one * 0.08f;break;
-                case 3: backPos = headTransform.position; test1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); test1.transform.position = headTransform.position;test1.transform.localScale = Vector3.one * 0.08f;break;
-                case 4: rightPos = headTransform.position; test1 = GameObject.CreatePrimitive(PrimitiveType.Sphere); test1.transform.position = headTransform.position;test1.transform.localScale = Vector3.one * 0.08f;break;
+                case 0: tPosePos = headTransform.position; break;
+                case 1: downPos = headTransform.position;  break;
+                case 2: leftPos = headTransform.position;  break;
+                case 3: backPos = headTransform.position;  break;
+                case 4: rightPos = headTransform.position;  break;
                 default: break;
             }
             Debug.Log("num clicks: " + numClicks + " headPos: " + headTransform.position);
 
             numClicks += 1;
+
+            // if (numClicks>6){
+            // // cubemanController.initialPosition = new Vector3(cubemanController.initialPosition.x, cubemanController.initialPosition.y + heightToTest/2, cubemanController.initialPosition.z);
+
+            // }
+
         }
 
         if (numClicks == 5)
@@ -63,7 +71,7 @@ public class UserCalibration : MonoBehaviour
             );
             Debug.Log("Center: " + tabletCenter2D);
 
-            cubemanController.initialPosition = new Vector3(cubemanController.initialPosition.x-tabletCenter2D.x, cubemanController.initialPosition.y + 0.0f, cubemanController.initialPosition.z-tabletCenter2D.y);
+            cubemanController.initialPosition = new Vector3(cubemanController.initialPosition.x-tabletCenter2D.x, cubemanController.initialPosition.y + heighFromTablet, cubemanController.initialPosition.z-tabletCenter2D.y);
 
             numClicks ++;
         }
