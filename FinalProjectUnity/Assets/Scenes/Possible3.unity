@@ -1456,6 +1456,7 @@ MonoBehaviour:
   angleGive: 70
   curTestAngle: 180
   userCal: {fileID: 5312998646067862856}
+  itemToFlip: {fileID: 0}
 --- !u!1 &1163658927
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,7 +3806,7 @@ MonoBehaviour:
   DisplayMapsWidthPercent: 20
   SensorHeight: 0.94
   SensorAngle: 10
-  MinUserDistance: 1
+  MinUserDistance: 0
   MaxUserDistance: 0
   DetectClosestUser: 1
   IgnoreInferredJoints: 0
